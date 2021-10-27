@@ -1,15 +1,14 @@
-# Nume Proiect 
-ReviewChan
+# Nume Proiect: ReviewChan
 
 ### Descriere proiect
  Site cu review-uri pentru alte site-uri
 
 ### Membrii
 	-Project Manager: 
-		>Pârvan Andrei Leonard
+		> Pârvan Andrei Leonard
 	-Developer: 
-		>Cismaru Cătălin Florin
+		> Cismaru Cătălin Florin
 	-Tester:
-		>Botsch Ovidiu-Rareș
+		> Botsch Ovidiu-Rareș
 	-Doc: 
-		>Popovici Andreea Maria
+		> Popovici Andreea Maria
