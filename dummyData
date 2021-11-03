@@ -1,0 +1,25 @@
+SELECT * FROM users;
+
+SELECT * FROM reviews;
+
+SELECT * FROM sites;
+
+INSERT INTO users(name, email, pass) VALUES ('A', 'B', 'C');
+INSERT INTO users(name, email, pass) VALUES ('D', 'E', 'F');
+INSERT INTO users(name, email, pass) VALUES ('G', 'H', 'I');
+INSERT INTO users(name, email, pass) VALUES ('J', 'K', 'L');
+
+
+INSERT INTO reviews(user_id, title, description, stars)
+VALUES (1, 'Cel mai boss', 'E ok frate', 3);
+INSERT INTO reviews(user_id, title, description, stars)
+VALUES (2, 'Cel mai slab', 'E frate', 1);
+INSERT INTO reviews(user_id, title, description, stars)
+VALUES (1, 'Cel mai boss', 'E ok', 5);
+
+INSERT INTO sites(review_id, name, description, stars)
+VALUES (1, 'Google', 'Un site', 3);
+INSERT INTO sites(review_id, name, description, stars)
+VALUES (2, 'Hangouts', 'Doi site', 1.1);
+INSERT INTO sites(review_id, name, description, stars)
+VALUES (1, 'Nebunilor', 'Este si el aici', 5.6);
