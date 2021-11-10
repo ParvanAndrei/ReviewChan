@@ -8,6 +8,8 @@
 		> Pârvan Andrei Leonard
 	-Developer: 
 		> Cismaru Cătălin Florin
+	-Developer:
+		> Cozmescu Daniel
 	-Tester:
 		> Botsch Ovidiu-Rareș
 	-Doc: 
