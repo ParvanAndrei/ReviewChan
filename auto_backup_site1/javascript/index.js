@@ -23,3 +23,7 @@ function myFunctionMine() {
     x.style.display = "none";
   }
 }
+
+function alert() {
+  alert('Review posted successfully');
+}

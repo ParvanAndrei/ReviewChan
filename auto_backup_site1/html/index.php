@@ -9,6 +9,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../css/style.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <script src="../javascript/index.js"></script>
 
@@ -76,7 +79,8 @@ if($con->connect_error){
         $res=$con->query($sql);
 
         while($row=$res->fetch_assoc()){
-            
+        $_SESSION['user_id'] = $row["user_id"];
+
 		echo '<div class="w3-card w3-round w3-white">';
         echo '<div class="w3-container">';
         echo '<h4 class="w3-center">Welcome, '.$row["fullname"].'</h4>';
@@ -191,16 +195,23 @@ if($con->connect_error){
               <h1 class="w3-opacity"><b>Create</b> Review</h1>
 			  <hr>
 
-			  <p><i class="material-icons">title</i>
-<input type="text" id="title" name="title" placeholder="Title" contenteditable="true" class="w3-border w3-padding" ></p>
-              <p><i class='fa fa-internet-explorer'></i>
-<input type="text" id="name" name="name" placeholder="Name of site" contenteditable="true" class="w3-border w3-padding"></p>
+			  <p>
+	 <form action="index.php" method="post">
+			<i class="material-icons">title</i>
+			  <input type="text" id="id3" name="id3" placeholder="ID" contenteditable="true" class="w3-border w3-padding" required></p>
+			<i class='fa fa-address-book'></i>
+<input type="text" id="title3" name="title3" placeholder="Title" contenteditable="true" class="w3-border w3-padding" required></p>
+             <p><i class='fa fa-internet-explorer'></i>
+<input type="text" id="name3" name="name3" placeholder="Name of site" contenteditable="true" class="w3-border w3-padding" required></p>
 			    <p><i class='fa fa-link'></i>
-<input type="text" id="link" name="link" placeholder="Link" contenteditable="true" class="w3-border w3-padding"></p>
+<input type="text" id="link3" name="link3" placeholder="Link" contenteditable="true" class="w3-border w3-padding" required></p>
+
+
+
 
 <p>
 <i class='fa fa-align-justify'></i>
-<textarea placeholder="Write your review here" id="review" rows="9" cols="80" ></textarea>
+<textarea placeholder="Write your review here" id="review3" name="review3" rows="9" cols="80" required></textarea>
 </p>
 			<h3>Rate it</h3>
 
@@ -210,7 +221,6 @@ if($con->connect_error){
 				
 <div class="cont">
 <div class="stars">
-<form action="">
   <input class="star star-5" id="star-5" type="radio" name="star" value=5/>
   <label class="star star-5" for="star-5"></label>
   <input class="star star-4" id="star-4" type="radio" name="star" value=4/>
@@ -221,19 +231,79 @@ if($con->connect_error){
   <label class="star star-2" for="star-2"></label>
   <input class="star star-1" id="star-1" type="radio" name="star" value=1/>
   <label class="star star-1" for="star-1"></label>
+  			 <button  type="submit3" value="Submit3" id ="but_submit3" name="but_submit3"  class="block"><i class="fa fa-pencil"></i>  Post</button> 	
+
 </form>
 </div>
 </div>
 
 
 			  
-			 <button  type="submit" value="Submit" class="block"><i class="fa fa-pencil"></i>  Post</button> 	
             </div>
           </div>
-</p>
+		</p>
         </div>
       </div>
-	  </p><p>
+	  </p>
+	  
+	  
+	  
+	  
+	 
+	   <?php
+  
+$servername = "localhost";
+$username = "dani";
+$password = "4444";
+$dbname = "isw";
+  
+// Create connection
+$conn = new mysqli($servername, 
+    $username, $password, $dbname);
+  
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " 
+        . $conn->connect_error);
+}	
+	     
+	  if(isset($_POST['but_submit3']))
+{    	
+		$review_id= $_POST["id3"];
+		$user_id =  $_SESSION['user_id'];
+        $title = $_POST['title3'];
+        $name =  $_POST['name3'];
+        $link = $_POST['link3'];
+		$description = $_POST['review3'];
+		$stars = $_POST['stars3'];
+		$sql = "INSERT INTO reviews(review_id,user_id,title,name,description,stars,link) VALUES ('$review_id','$user_id','$title','$name','$description','$stars','$link')"; 
+
+			if(mysqli_query($conn, $sql)) 
+			{
+				echo'<div class="alert alert-success">';
+				echo'<strong>Success!</strong> Review added to our site.';
+				echo'</div>';
+			}
+			 else{
+			echo "Error: " . $sql . ":-" . mysqli_error($conn);
+		
+					}
+		
+		
+     mysqli_close($conn);
+}
+
+?>
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  <p>
       <div class="w3-row-padding">
         <div class="w3-col m12">
 		<p>
