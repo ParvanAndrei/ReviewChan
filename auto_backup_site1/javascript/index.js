@@ -23,7 +23,4 @@ function myFunctionMine() {
     x.style.display = "none";
   }
 }
-
-function alert() {
-  alert('Review posted successfully');
-}
+//functions to make create, search and my review cards appear

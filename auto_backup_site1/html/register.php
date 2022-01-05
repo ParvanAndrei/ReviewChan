@@ -1,24 +1,21 @@
 <?php
-  
+  //connection variables
 $servername = "localhost";
 $username = "dani";
 $password = "4444";
-$dbname = "isw";
-  
+$dbname = "isw"; 
 // Create connection
 $conn = new mysqli($servername, 
     $username, $password, $dbname);
-  
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " 
         . $conn->connect_error);
-}
-		
-     
+}	
+     //if button submit is pressed
 	 if(isset($_POST['but_submit2']))
 {    	
-
+//get variables from input areas and if password verification ( retype form) is equal to setted pasword then show message and insert
 		$user_id =  $_POST['id'];
         $fullname = $_POST['fullname'];
         $email =  $_POST['email'];
@@ -29,26 +26,23 @@ if ($conn->connect_error) {
 			if(!( $user_id == "" or $fullname = "" or $email == "" or $pass == ""))
 			if (mysqli_query($conn, $sql)) {
 			echo '<div class="center">';
-			echo '<p><h1>New account has been created successfully, return to login page <a href="http://localhost/teste_isw/ReviewChan/html/login.php">here</a></h1></p></div>';
-			
-		} else {
+			echo '<p><h1>New account has been created successfully, return to login page <a href="http://localhost/teste_isw/ReviewChan/html/login.php">here</a></h1></p></div>';	
+		} else {//else throw error
 			echo "Error: " . $sql . ":-" . mysqli_error($conn);
 		}
 		}
-		else
+		else//else throw error
 		{
 		echo '<div class="center">';
 		echo '<p><h1>Password typed incorrectly</h1></p></div>';
 		}
      mysqli_close($conn);
 }
-
 ?>
-
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+			<style>
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
 
@@ -136,47 +130,54 @@ body {
   background-size: 100% 100%;
 }
 </style>
-
-</head>
-
-<body>
-<div class="center">
-<img src="../images/logo.PNG" style="float:middle">
-<p><h1>Join our community, register now!</h1></p>
-<p><h1>#BecomeAChan</h1></p>
-
-</div>
-<button class="open-button" onclick="openForm()">Register</button>
-
-<div class="form-popup" id="myForm" >
-  <form method="post" action="register.php" class="form-container">
-  <div id="div_login">
-    <h1>Register</h1>
-
-<label for="email"><b>ID</b></label>
-    <input type="text" class="textbox" id="id" name="id" placeholder="ID" required>
-	<label for="fullname"><b>Full Name</b></label>
-    <input type="text" class="textbox" id="fullname" name="fullname" placeholder="Full name" required>
-    <label for="email"><b>Email</b></label>
-    <input type="text" class="textbox" id="email" name="email" placeholder="Email" required>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" class="textbox" id="password" name="password" placeholder="Password" required>
-	
-	 <label for="psw2"><b>Repeat Password</b></label>
-    <input type="password" class="textbox" id="password2" name="password2" placeholder="Repeat Password" required>
-
-	<button type="submit2" value="Submit2" name="but_submit2" id="but_submit2" class="btn">Register</button>
-		<p><hr>
-	<a href="http://localhost/teste_isw/ReviewChan/html/login.php">Already have an account ? Sign in here.
-	</a></p>
-
-    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-  </div>
-  </form>
-</div>
-
-<script>
+<!-- same story as login, same design and same logic -->
+		</head>
+		<body>
+			<div class="center">
+				<img src="../images/logo.PNG" style="float:middle">
+					<p>
+						<h1>Join our community, register now!</h1>
+					</p>
+					<p>
+						<h1>#BecomeAChan</h1>
+					</p>
+				</div>
+				<button class="open-button" onclick="openForm()">Register</button>
+				<div class="form-popup" id="myForm">
+					<form method="post" action="register.php" class="form-container">
+						<div id="div_login">
+							<h1>Register</h1>
+							<label for="email">
+								<b>ID</b>
+							</label>
+							<input type="text" class="textbox" id="id" name="id" placeholder="ID" required>
+							<label for="fullname">
+								<b>Full Name</b>
+							</label>
+							<input type="text" class="textbox" id="fullname" name="fullname" placeholder="Full name" required>
+							<label for="email">
+								<b>Email</b>
+							</label>
+							<input type="text" class="textbox" id="email" name="email" placeholder="Email" required>
+							<label for="psw">
+								<b>Password</b>
+							</label>
+							<input type="password" class="textbox" id="password" name="password" placeholder="Password" required>
+							<label for="psw2">
+								<b>Repeat Password</b>
+							</label>
+							<input type="password" class="textbox" id="password2" name="password2" placeholder="Repeat Password" required>
+							<button type="submit2" value="Submit2" name="but_submit2" id="but_submit2" class="btn">Register</button>
+							<p>
+								<hr>
+									<a href="http://localhost/teste_isw/ReviewChan/html/login.php">Already have an account ? Sign in here.
+	</a>
+								</p>
+								<button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+							</div>
+						</form>
+					</div>
+					<script>
 function openForm() {
   document.getElementById("myForm").style.display = "block";
 }
@@ -185,8 +186,7 @@ function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }
 </script>
-
-</body>
-</html>
+				</body>
+			</html>
 
 

@@ -1,37 +1,39 @@
 <?php
 include "config.php";
-
-
-if(isset($_POST['but_submit'])){
-
+//add config file to main login form
+if(isset($_POST['but_submit'])){//if submit button is pressed
+//get username and password from input fields
     $uname = mysqli_real_escape_string($con,$_POST['txt_uname']);
     $password = mysqli_real_escape_string($con,$_POST['txt_pwd']);
-
+//if they are filled ( not empty )
     if ($uname != "" && $password != ""){
-
+//save query into variable
         $sql_query = "select count(*) as cntUser from users where email='".$uname."' and pass='".$password."'";
+//results into variable
         $result = mysqli_query($con,$sql_query);
+//getting row in order to access different items from it
         $row = mysqli_fetch_array($result);
-
+//getting count variable
         $count = $row['cntUser'];
-
+//check if count is not 0, means password and username matches input
         if($count > 0){
+//save variable for later use (open session by username in index.php, transporting variable through $_session parameter
             $_SESSION['uname'] = $uname;
+//goto main page
             header('Location: index.php');
+//if not true then show message
         }else{
             echo '<div class="center">';
 		echo '<p><h1>Invalid username or password, try again.</h1></p></div>';
         }
-
     }
-
 }
 ?>
-
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- style for login merged here in .php -->
+			<style>
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
 
@@ -119,39 +121,47 @@ body {
   background-size: 100% 100%;
 }
 </style>
+		</head>
+		<body>
+			<div class="center">
+				<img src="../images/logo.PNG" style="float:middle">
+					<p>
+						<h1>Welcome to our community, sign in and let's get started.</h1>
+					</p>
+					<p>
+						<h1>#IAmAChan</h1>
+					</p>
+				</div>
+				<!-- onclick button, call openForm() function from script in order to make login form appear from bottom -->
+				<button class="open-button" onclick="openForm()">Login</button>
+				<div class="form-popup" id="myForm">
+					<form method="post" action="" class="form-container"><!-- All of forms are method=post for sending data into php scripts by id or name of input  -->
 
-</head>
+						<div id="div_login">
+							<h1>Login</h1>
+							<label for="email">
+								<b>Email</b>
+							</label>
+							<input type="text" class="textbox" id="txt_uname" name="txt_uname" placeholder="Email" required>
+							<label for="psw">
+								<b>Password</b>
+							</label>
+							<input type="password" class="textbox" id="txt_uname" name="txt_pwd" placeholder="Password" required>
+							<button type="submit" value="Submit" name="but_submit" id="but_submit" class="btn">Login</button>
+							<p>
+								<hr><!--Reference to register for creating an account in case it doesn't exists -->
 
-<body>
-<div class="center">
-<img src="../images/logo.PNG" style="float:middle">
-<p><h1>Welcome to our community, sign in and let's get started.</h1></p>
-<p><h1>#IAmAChan</h1></p>
+									<a href="http://localhost/teste_isw/ReviewChan/html/register.php">Don't have an account yet? Register here.
+					</a>
+								</p>
+								<button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+							</div>
+						</form>
+					</div>
+					<!-- Script to close and open form by id -->
 
-</div>
-<button class="open-button" onclick="openForm()">Login</button>
-
-<div class="form-popup" id="myForm" >
-  <form method="post" action="" class="form-container">
-  <div id="div_login">
-    <h1>Login</h1>
-
-    <label for="email"><b>Email</b></label>
-    <input type="text" class="textbox" id="txt_uname" name="txt_uname" placeholder="Email" required>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" class="textbox" id="txt_uname" name="txt_pwd" placeholder="Password" required>
-
-    <button type="submit" value="Submit" name="but_submit" id="but_submit" class="btn">Login</button>
-	<p><hr>
-	<a href="http://localhost/teste_isw/ReviewChan/html/register.php">Don't have an account yet? Register here.
-	</a></p>
-    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-  </div>
-  </form>
-</div>
-
-<script>
+					<script>
+					
 function openForm() {
   document.getElementById("myForm").style.display = "block";
 }
@@ -160,8 +170,7 @@ function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }
 </script>
-
-</body>
-</html>
+				</body>
+			</html>
 
 
