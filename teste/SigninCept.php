@@ -37,6 +37,12 @@ $I->fillField('txt_pwd','2222');
 $I->click('#but_submit');
 $I->cantSee('Create Review');
 
+$I->amGoingTo('try to log in with wrong format email');
+$I->fillField('txt_uname', 'ovi');
+$I->fillField('txt_pwd','2222');
+$I->click('#but_submit');
+$I->cantSee('Create Review');
+
 $I->amGoingTo('try to log in with wrong password');
 $I->fillField('txt_uname', 'ovi27@gmail.com');
 $I->fillField('txt_pwd','2223');
@@ -55,7 +61,6 @@ $I->fillField('txt_pwd','2222');
 $I->click('#but_submit');
 $I->see('Welcome, Ovidiu Botsch');
 $I->see('Create Review');
-
 
 
 
