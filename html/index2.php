@@ -185,8 +185,8 @@ $search_value='guest';//keep this variable from login form in order to query it 
 				<br><br>
 				<label for="ascdesc">Type of order</label>
 				<select name="ascdesc" id="ascdesc">
-				<option value="desc">Ascending</option>
-				<option value="asc">Descending</option>
+				<option value="asc">Ascending</option>
+				<option value="desc">Descending</option>
 				</select>
 				<br><br>
 				<button type="submit" value="Search" class="block"><i class='fa fa-search'> Search</i></button>

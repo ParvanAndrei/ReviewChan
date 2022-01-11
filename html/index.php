@@ -65,12 +65,7 @@ session_start();
  <!-- DropDown notifications -->
 
  <div class="w3-dropdown-hover w3-hide-small">
-    <button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green">3</span></button>     
-    <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
-      <a href="#" class="w3-bar-item w3-button">We updated your User Experience on 07-December-2021</a>
-      <a href="#" class="w3-bar-item w3-button">We updated your Account Privacy Settings on 11-October-2021</a>
-      <a href="#" class="w3-bar-item w3-button">We updated your Login Security on 26-November-2021</a>
-    </div>
+   
   </div>
   <!-- button for premium, opens separate page -->
 
@@ -313,8 +308,8 @@ if (!$con) {
 				<br><br>
 				<label for="ascdesc">Type of order</label>
 				<select name="ascdesc" id="ascdesc">
-				<option value="desc">Ascending</option>
-				<option value="asc">Descending</option>
+				<option value="asc">Ascending</option>
+				<option value="desc">Descending</option>
 				</select>
 				<br><br>
 				<button type="submit" value="Search" class="block"><i class='fa fa-search'> Search</i></button>
