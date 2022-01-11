@@ -122,8 +122,9 @@ $search_value=$_SESSION['uname'];//keep this variable from login form in order t
         echo '<div class="w3-container">';
         echo '<h4 class="w3-center">Welcome, '.$row["fullname"].'</h4>';
         echo '<hr>';
-        echo '<p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>Email - '.$row["email"].'</p>';
-        echo '<p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i>User ID - '.$row["user_id"].'</p>';
+		        echo '<p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> '.$row["fullname"].'</p>';
+
+        echo '<p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> '.$row["email"].'</p>';
         echo '</div>';
         echo '</div>';
         echo '<br>';
@@ -214,9 +215,9 @@ $search_value=$_SESSION['uname'];//keep this variable from login form in order t
 			<i class="material-icons">title</i><!-- Here is the area for different details about the site/review -->
 <input type="text" id="title3" name="title3" placeholder="Title" contenteditable="true" class="w3-border w3-padding" required></p>
              <p><i class='fa fa-internet-explorer'></i>
-<input type="text" id="name3" name="name3" placeholder="Name of site" contenteditable="true" class="w3-border w3-padding" pattern="https?://.+" title="Invalid link format" required></p>
+<input type="text" id="name3" name="name3" placeholder="Name of site" contenteditable="true" class="w3-border w3-padding" pattern="[a-z0-9._%+-]+\.[a-z]{2,}$" title="The email format is invalid"  required></p>
 			    <p><i class='fa fa-link'></i>
-<input type="text" id="link3" name="link3" placeholder="Link" contenteditable="true" class="w3-border w3-padding" required></p>
+<input type="text" id="link3" name="link3" placeholder="Link" contenteditable="true" class="w3-border w3-padding" pattern="https?://.+" title="Invalid link format" required></p>
 <!-- input in the form of select with dropdown options -->
 <label for="category3">Category</label>
 				<select name="category3" id="category3">
@@ -300,7 +301,7 @@ if (!$con) {
 				<option value="category">Category</option>
 				</select>
 				<br><br>
-				<label for="orderbyy">Order by</label>
+				<label for="orderby">Order by</label>
 				<select name="orderby" id="orderby">
 				<option value="review_id">Review ID</option>
 				<option value="title">Title</option>
@@ -336,7 +337,7 @@ $what_to_search=$_POST["searchby"];
 $order=$_POST["orderby"];
 $ascc=$_POST["ascdesc"];
  if(!($search_value == null or $search_value == '')){
-        $sql="SELECT name,description,fullname,title,stars,link,category FROM reviews r join users u on r.user_id=u.user_id where $what_to_search like '%$search_value%' order by '$order' '$ascc'";
+        $sql="SELECT name,description,fullname,title,stars,link,category FROM reviews r join users u on r.user_id=u.user_id where $what_to_search like '%$search_value%' order by $order $ascc";
 		//we always do a join in order to return some data from review's author too. EX: fullname
         $res=$con->query($sql);
         while($row=$res->fetch_assoc()){      

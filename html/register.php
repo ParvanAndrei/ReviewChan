@@ -12,8 +12,7 @@ $con = mysqli_connect($host, $user, $password,$dbname);
 		$pass2 = $_POST['password2'];
 		$msg="In order to activate your account, please insert this code in our webpage";
 		if($pass == $pass2)
-		{	
-	
+		{	 	
 			$sql = "INSERT INTO users (fullname,email,pass) VALUES ('$fullname','$email','$pass')"; 
 			if(!( $fullname = "" or $email == "" or $pass == ""))
 			if (mysqli_query($con, $sql)) {

@@ -209,7 +209,7 @@ $what_to_search=$_POST["searchby"];
 $order=$_POST["orderby"];
 $ascc=$_POST["ascdesc"];
  if(!($search_value == null or $search_value == '')){
-        $sql="SELECT name,description,fullname,title,stars,link,category FROM reviews r join users u on r.user_id=u.user_id where $what_to_search like '%$search_value%' order by '$order' '$ascc'";
+        $sql="SELECT name,description,fullname,title,stars,link,category FROM reviews r join users u on r.user_id=u.user_id where $what_to_search like '%$search_value%' order by $order $ascc";
 		//we always do a join in order to return some data from review's author too. EX: fullname
         $res=$con->query($sql);
         while($row=$res->fetch_assoc()){      
