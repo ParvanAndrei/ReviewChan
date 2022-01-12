@@ -99,6 +99,7 @@ $I->selectOption('#stars', '5');
 $I->fillField('review3','Best shop in the city');
 $I->click('Post', '.block');
 
+//check if I can see added review
 $I->amOnPage('http://localhost/ReviewChan/html/index2.php');
 $I->fillField('search','Lidl');
 $I->selectOption('searchby', 'name');
